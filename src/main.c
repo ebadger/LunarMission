@@ -21,7 +21,7 @@ const unsigned char landing_bitmap[] =
 
 int main(void)
 {
-  unsigned char i, k, state, lnd_x;
+  unsigned char k, state, lnd_x;
 
   signed int dx, dy;
 
@@ -35,12 +35,12 @@ int main(void)
   {
     hgr();
 
-    memcpy(0x2000, src_bg_bin, src_bg_bin_len);
+    memcpy((void*)0x2000, src_bg_bin, src_bg_bin_len);
     introText();
 
     get();
 
-    memcpy(0x2000, src_bg_bin, src_bg_bin_len);
+    memcpy((void *)0x2000, src_bg_bin, src_bg_bin_len);
 
     lnd_x = (rand() % 170 + 20) * 16;
 
@@ -58,7 +58,7 @@ int main(void)
     render_sprite(lem_bitmap, x / 16, y / 16, OP_XOR);
     while (1)
     {
-      k = key();
+      k = toupper(key());
 
       if (k == 'Z')
       {
@@ -114,6 +114,8 @@ int main(void)
         state = 0;
         break;
       }
+
+      wait(2);
     }
 
     if (state == 1)

@@ -1,10 +1,10 @@
 AC=java -jar AppleCommander-linux64-gtk-1.6.0.jar
-CC65_HOME=~/Programs/cc65
+CC65_HOME=/usr
 
 
 # Run 'make SYS=<target>'; or, set a SYS env.
 # var. to build for another target system.
-SYS ?= apple2enh
+SYS ?= ebadger
 
 # Just the usual way to find out if we're
 # using cmd.exe to execute make rules.

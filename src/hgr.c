@@ -59,10 +59,7 @@ const unsigned char BIT7[7] = {1, 2, 4, 8, 16, 32, 64};
 // clear screen and set graphics mode
 void hgr()
 {
-  STROBE(0xc052);                             // turn off mixed-mode
-  STROBE(0xc054);                             // page 1
-  STROBE(0xc057);                             // hi-res
-  STROBE(0xc050);                             // set graphics mode
+  __asm__ ("jsr $C115"); // vector for hires page 1 switch  
   memset((unsigned char *)0x2000, 0, 0x2000); // clear page 1
 }
 
